@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">PortPark</string>
+    <!--<string name="google_play_services_version">11910000</string>-->
+    <string name="com.google.android.maps.v2.API_KEY">AIzaSyBxAPuenJbi0fS3s8EJLkycGMjLoHfSsMk</string>
+    <string name="com.google.android.geo.API_KEY">AIzaSyBpO1JEMrHKCXcGG2v7hGdgvZEWQGbawYQ</string>
+</resources>
