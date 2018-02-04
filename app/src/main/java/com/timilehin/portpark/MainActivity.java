@@ -133,14 +133,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                            addressView.setText("You are currently around: " + "Lat: "
 //                                    + mLastKnownLocation.getLatitude() + "\n"
 //                                    + "\t" + "Long: " + mLastKnownLocation.getLongitude() );
-                            addressView.setText("You are currently around: " + addConverter(longi));
+                            addressView.setText("You are currently around: " + addConverter());
                         } else {
                             Log.d(constants.TAG, "Current location is null. Using defaults.");
                             Log.e(constants.TAG, "Exception: %s", task.getException());
                             mMap.moveCamera(CameraUpdateFactory
                                     .newLatLngZoom(constants.mDefaultLocation, constants.DEFAULT_ZOOM));
-                            mMap.getUiSettings().setMyLocationButtonEnabled(false);
-
+                            //mMap.getUiSettings().setMyLocationButtonEnabled(false);
+                                /*
+                                timi check here for net work access and gps access too
+                                if any is not avaliable pop dialog
+                                 */
                         }
                     }
                 });
@@ -196,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         }
-        updateLocationUI();
+        //updateLocationUI();
     }
 
     /**
@@ -254,7 +257,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //
 //    }
 
-    private String addConverter(double latitude, double longitude) {
+    private String addConverter() {
+        double latitude, longitude;
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         latitude = mLastKnownLocation.getLatitude();
         longitude = mLastKnownLocation.getLongitude();
