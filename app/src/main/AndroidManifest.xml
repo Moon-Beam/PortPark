@@ -24,13 +24,20 @@
             </intent-filter>
         </activity>
 
+        <!-- Service to asynchronously fetch a location address using a Geocoder. Setting the
+        android:exported attribute to "false" stops other apps from starting this
+        service, even when using an explicit intent. -->
+        <service
+            android:name=".FetchAddressIntentService"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/com.google.android.maps.v2.API_KEY"/>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/com.google.android.geo.API_KEY"/>
+        <!--<meta-data-->
+        <!--android:name="com.google.android.geo.API_KEY"-->
+        <!--android:value="@string/com.google.android.geo.API_KEY"/>-->
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>

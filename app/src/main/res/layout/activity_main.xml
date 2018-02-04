@@ -6,34 +6,46 @@
     android:layout_height="match_parent"
     tools:context="com.timilehin.portpark.MainActivity">
 
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="16dp"
+        android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <com.google.android.gms.maps.MapView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:text="Park Here"
-        android:textAlignment="center"
-        app:elevation="@dimen/place_autocomplete_powered_by_google_height"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|left" />
+        android:paddingBottom="@dimen/place_autocomplete_powered_by_google_height">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+
+            android:id="@+id/mapView"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.timilehin.mymaps.MainActivity"
+            tools:layout="@layout/activity_main">
+
+        </fragment>
+
+    </com.google.android.gms.maps.MapView>
+
+
+    <TextView
+        android:id="@+id/currentLocationAddress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/place_autocomplete_powered_by_google_height"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimaryDark"
+        android:textAlignment="textStart"
+        android:textColor="#ffffff"
+        android:textColorHighlight="#000000" />
+
 
 </android.support.design.widget.CoordinatorLayout>
