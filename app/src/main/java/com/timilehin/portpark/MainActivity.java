@@ -1,6 +1,7 @@
 package com.timilehin.portpark;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -78,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
 
+        Intent intent = new Intent(this, AddParkingInfoActivity.class);
+        startActivity(intent);
     }
 
     /**
