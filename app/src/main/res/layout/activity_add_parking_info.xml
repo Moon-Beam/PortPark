@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AddParkingInfoActivity"
+    android:id="@+id/linearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryDarkColor"
+        app:layout_constraintBottom_toTopOf="@id/llReminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:title="Add Parking Info"
+        app:titleTextColor="#ffffffff" />
+
+    <LinearLayout xmlns:n3="http://schemas.android.com/apk/res-auto"
+        android:id="@id/llReminder"
+        style="@style/settings_item_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.0dip"
+        n3:layout_constraintBottom_toTopOf="@id/separator"
+        n3:layout_constraintEnd_toEndOf="parent"
+        n3:layout_constraintHorizontal_bias="0.0"
+        n3:layout_constraintStart_toStartOf="parent"
+        n3:layout_constraintTop_toBottomOf="@id/toolbar2"
+        n3:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_reminder_header"
+            style="@style/settings_header"
+            android:text="@string/sett_reminder_header" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/tv_reminder_label"
+                style="@style/settings_sub_header"
+                android:text="@string/sett_reminder_label" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/timerSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:gravity="center_vertical"
+                android:theme="@style/switch_theme" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_reminder_desc"
+            style="@style/settings_details"
+            android:paddingBottom="@dimen/items_inbetween_space"
+            android:paddingTop="@dimen/items_top_padding"
+            android:text="@string/sett_reminder_desc" />
+
+        <LinearLayout
+            android:id="@+id/ll_set_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="@dimen/items_inbetween_space">
+
+                <TextView
+                    android:id="@+id/tv_reminder_time_label"
+                    style="@style/settings_sub_header"
+                    android:text="@string/sett_reminder_time_label" />
+
+                <ImageView
+                    android:id="@+id/iv_timer"
+                    android:layout_width="@dimen/timer_icon"
+                    android:layout_height="@dimen/timer_icon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_timer" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_reminder_time_desc"
+                style="@style/settings_details"
+                android:paddingBottom="@dimen/items_inbetween_space"
+                android:paddingTop="@dimen/items_top_padding"
+                android:text="@string/sett_reminder_time_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        xmlns:n4="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/separator"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:background="#ffc0c0c0"
+        n4:layout_constraintBottom_toTopOf="@+id/snap"
+        n4:layout_constraintEnd_toEndOf="parent"
+        n4:layout_constraintHorizontal_bias="0.0"
+        n4:layout_constraintStart_toStartOf="parent"
+        n4:layout_constraintTop_toBottomOf="@+id/llReminder" />
+
+    <LinearLayout
+        xmlns:n5="http://schemas.android.com/apk/res-auto"
+        android:id="@id/snap"
+        style="@style/settings_item_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8.0dip"
+        n5:layout_constraintBottom_toTopOf="@+id/saveParkingBtn"
+        n5:layout_constraintEnd_toEndOf="parent"
+        n5:layout_constraintHorizontal_bias="0.0"
+        n5:layout_constraintStart_toStartOf="parent"
+        n5:layout_constraintTop_toBottomOf="@id/separator"
+        n5:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            style="@style/settings_header"
+            android:text="@string/snap_parking" />
+
+        <LinearLayout
+            android:id="@+id/imageCapture"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="@dimen/items_inbetween_space">
+
+                <TextView
+                    android:id="@+id/tv_capture_label"
+                    style="@style/settings_sub_header"
+                    android:text="Image Capture" />
+
+                <ImageView
+                    android:id="@+id/imageCameraView"
+                    android:layout_width="30.0dip"
+                    android:layout_height="30.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/primaryDarkColor"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/ic_menu_camera" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_imageCapture_desc"
+                style="@style/settings_details"
+                android:paddingBottom="@dimen/items_inbetween_space"
+                android:paddingTop="@dimen/items_top_padding"
+                android:text="Take a picture your packing area for easy recal" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/carParkview"
+            android:layout_width="fill_parent"
+            android:layout_height="100.0dip"
+            n5:layout_constraintEnd_toEndOf="parent"
+            n5:layout_constraintStart_toStartOf="parent"
+            n5:layout_constraintTop_toTopOf="@id/imageCapture" />
+    </LinearLayout>
+
+    <Button xmlns:n6="http://schemas.android.com/apk/res-auto"
+        android:id="@id/saveParkingBtn"
+        android:layout_width="122.0dip"
+        android:layout_height="36.0dip"
+        android:layout_marginBottom="16.0dip"
+        android:background="@color/primaryDarkColor"
+        android:text="Save Parking"
+        android:textAlignment="center"
+        android:textColor="#ffffffff"
+        n6:layout_constraintBottom_toBottomOf="parent"
+        n6:layout_constraintEnd_toEndOf="parent"
+        n6:layout_constraintStart_toStartOf="parent"
+        n6:layout_constraintTop_toBottomOf="@id/snap" />
+</android.support.constraint.ConstraintLayout>
