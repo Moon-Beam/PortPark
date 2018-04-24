@@ -17,6 +17,12 @@ import android.view.TextureView;
 import android.widget.TextView;
 import android.widget.ZoomControls;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceFilter;
 import com.google.android.gms.location.places.PlaceLikelihood;
@@ -36,6 +42,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.timilehin.portpark.Models.CarPark;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -84,6 +93,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
+
+        //TEST
+        PPCarParksSearch pps = new PPCarParksSearch(this, "", "");
+        PPCarParksSearchEventListener carParksSearchEventListener = new PPCarParksSearchEventListener() {
+            @Override
+            public void onSuccessful(CarPark[] carPacks) {
+                Log.d("AAA", "onSuccessful: " + carPacks.toString());
+            }
+
+            @Override
+            public void onFail(VolleyError error) {
+                Log.d("AAA", "onFail: ");
+            }
+        };
+        pps.setOnEventListener(carParksSearchEventListener);
+        //END TEST
 
     }
 
