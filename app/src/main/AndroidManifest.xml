@@ -24,6 +24,10 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".AlarmReceiver" />
+
+        <activity android:name=".Dialog" />
+
         <!--
         Service to asynchronously fetch a location address using a Geocoder. Setting the
         android:exported attribute to "false" stops other apps from starting this
@@ -47,7 +51,9 @@
 
         <activity android:name=".AddParkingInfoActivity" />
         <activity android:name=".FindCar" />
-        <activity android:name=".testDB"></activity>
+        <activity android:name=".testDB" />
+        <activity android:name=".ReminderActivity" />
+        <activity android:name=".TimerActivity"></activity>
     </application>
 
 </manifest>
