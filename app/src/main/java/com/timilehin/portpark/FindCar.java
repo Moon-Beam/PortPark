@@ -14,7 +14,7 @@ public class FindCar extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_find_car);
 
-        Intent inte = new Intent(this, testDB.class);
-        startActivity(inte);
+//        Intent inte = new Intent(this, testDB.class);
+//        startActivity(inte);
     }
 }
