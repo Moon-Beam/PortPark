@@ -7,10 +7,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +39,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import javax.xml.datatype.Duration;
-
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap map;
     private SupportMapFragment mapFragment;
@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private boolean locationPermissionGranted = false;
     private FusedLocationProviderClient fusedLocationClient;
     private TextView textViewCurrentLocationAddress;
+    private FloatingActionButton floatingActionButtonParkCar;
+    private FloatingActionButton floatingActionButtonFindCar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +57,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapView);
         textViewCurrentLocationAddress = (TextView) findViewById(R.id.currentLocationAddress);
+        floatingActionButtonParkCar = (FloatingActionButton) findViewById(R.id.floatingActionButtonPark);
+        floatingActionButtonFindCar = (FloatingActionButton) findViewById(R.id.floatingActionButtonFindCar);
         mapFragment.getMapAsync(this);
         autocompleteFragment = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+
+        floatingActionButtonParkCarSetClickListener();
+        floatingActionButtonFindSetCarClickListener();
 
         setupAutocompleteFragment();
     }
@@ -223,5 +230,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         }
+    }
+
+
+    private void floatingActionButtonParkCarSetClickListener() {
+        floatingActionButtonParkCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AddParkingInfoActivity.class);
+                LatLng latLng = new LatLng(122,122);
+                intent.putExtra("CurrentLocationLatLng", latLng);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void floatingActionButtonFindSetCarClickListener() {
+        floatingActionButtonFindCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FindCar.class);
+                LatLng latLng = new LatLng(122,122);
+                intent.putExtra("CurrentLocationLatLng", latLng);
+                startActivity(intent);
+            }
+        });
     }
 }
