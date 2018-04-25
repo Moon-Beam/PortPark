@@ -21,7 +21,7 @@ public class PPCarParksSearch {
     private Gson gson;
 
     public PPCarParksSearch(Context context, String lon, String lat) {
-        String url = getURL("50.8197675","-1.0879769");
+        String url = getURL(lon,lat);
         makeNetworkRequest(context, url);
 
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -34,7 +34,7 @@ public class PPCarParksSearch {
 
     private String getURL(String lon, String lat) {
         String url = "https://maps.googleapis.com/maps/api/place/" +
-                "nearbysearch/json?location=" + lon + ","  + lat + "&" +
+                "nearbysearch/json?location=" + lat + ","  + lon + "&" +
                 "radius=1500&" +
                 "type=parking&" +
                 "key=AIzaSyBxAPuenJbi0fS3s8EJLkycGMjLoHfSsMk";

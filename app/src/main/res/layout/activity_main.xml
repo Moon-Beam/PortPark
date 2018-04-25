@@ -11,30 +11,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-
-
     </android.support.design.widget.AppBarLayout>
 
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
 
-    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/place_autocomplete_powered_by_google_height">
+        android:layout_height="match_parent"
+        tools:context="com.timilehin.mymaps.MainActivity">
 
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
 
-            android:id="@+id/mapView"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+
+    </fragment>
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        card_view:cardCornerRadius="4dp">
+
+        <fragment
+            android:id="@+id/place_autocomplete_fragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="com.timilehin.mymaps.MainActivity"
-            tools:layout="@layout/activity_main">
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            />
 
-        </fragment>
+    </android.support.v7.widget.CardView>
 
-    </com.google.android.gms.maps.MapView>
 
 
     <TextView
@@ -46,6 +60,5 @@
         android:textAlignment="textStart"
         android:textColor="#ffffff"
         android:textColorHighlight="#000000" />
-
 
 </android.support.design.widget.CoordinatorLayout>
