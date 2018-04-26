@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 public class AddParkingInfoActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
@@ -50,6 +49,8 @@ public class AddParkingInfoActivity extends AppCompatActivity implements TimePic
         linearLayoutSetReminderTimeSetOnClickListener();
         buttonSaveParkingSetOnClickListener();
         textViewCarParkInformationSetText();
+
+        switchCompatTimer.setChecked(false);
     }
 
     private void textViewCarParkInformationSetText() {

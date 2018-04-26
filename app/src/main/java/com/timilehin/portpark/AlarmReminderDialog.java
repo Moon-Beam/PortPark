@@ -37,7 +37,6 @@ public class AlarmReminderDialog extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     @Override
