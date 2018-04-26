@@ -168,7 +168,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         }
 
-        fusedLocationClient.getLastLocation()
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions();
+
+        } else fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {

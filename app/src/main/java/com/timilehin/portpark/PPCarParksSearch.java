@@ -75,6 +75,5 @@ public class PPCarParksSearch {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonObjReq);
 
-        //MyApplication.getInstance().addToRequestQueue(jsonObjReq,"getRequest"); //FIX THIS
     }
 }
