@@ -95,9 +95,9 @@ public class AddParkingInfoActivity extends AppCompatActivity implements TimePic
             public void onClick(View view) {
                 saveCarparkLatLngInDB();
                 createAlarm();
-                finish();
                 String toastMessage = "Parking information saved";
                 Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
@@ -113,7 +113,7 @@ public class AddParkingInfoActivity extends AppCompatActivity implements TimePic
         if (linearLayoutSetReminderTime.isEnabled() == false) { return; }
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR , timePickerSelectedHour.intValue());
+        calendar.set(Calendar.HOUR_OF_DAY , timePickerSelectedHour.intValue());
         calendar.set(Calendar.MINUTE , timePickerSelectedMinute.intValue());
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);

@@ -11,37 +11,30 @@ import android.widget.Button;
 
 public class AlarmReminderDialog extends AppCompatActivity {
 
-    private Button okBtn, cancleBtn;
+    private Button buttonOk, buttonCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_reminder_dialog);
 
-        okBtn = findViewById(R.id.okBtn);
-        cancleBtn = findViewById(R.id.cancelBtn);
+        buttonOk = findViewById(R.id.buttonOk);
+        buttonCancel = findViewById(R.id.buttonCancel);
 
-        okBtn.setOnClickListener(new View.OnClickListener() {
+        buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Ringtone ringtone = getIntent().getParcelableExtra("abc");
-                //ringtone.stop();
                 com.timilehin.portpark.RingtoneManager.getRingtone().stop();
-//                Ringtone ringtone = RingtoneManager.getRingtone(getApplicationContext(), alarmUri);
-//                ringtone.stop();
-                Intent in = new Intent(v.getContext(), MainActivity.class);
+                Intent in = new Intent(v.getContext(), FindCar.class);
                 startActivity(in);
             }
         });
 
-        cancleBtn.setOnClickListener(new View.OnClickListener() {
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-                Ringtone ringtone = RingtoneManager.getRingtone(getApplicationContext(), alarmUri);
-                ringtone.stop();
-                onStop();
+                com.timilehin.portpark.RingtoneManager.getRingtone().stop();
+                finish();
             }
         });
 
