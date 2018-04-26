@@ -72,7 +72,6 @@
         android:scaleType="center"
         />
 
-
     <TextView
         android:id="@+id/currentLocationAddress"
         android:layout_width="match_parent"

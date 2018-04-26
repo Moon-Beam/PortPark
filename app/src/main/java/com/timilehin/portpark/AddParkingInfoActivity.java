@@ -113,14 +113,13 @@ public class AddParkingInfoActivity extends AppCompatActivity implements TimePic
         if (linearLayoutSetReminderTime.isEnabled() == false) { return; }
 
         Calendar calendar = Calendar.getInstance();
-        long timeInMil = TimeUnit.HOURS.toMillis(timePickerSelectedHour.intValue()) +
-                TimeUnit.MINUTES.toMillis(timePickerSelectedMinute.intValue());
-        calendar.setTimeInMillis(timeInMil);
+        calendar.set(Calendar.HOUR , timePickerSelectedHour.intValue());
+        calendar.set(Calendar.MINUTE , timePickerSelectedMinute.intValue());
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMil, pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     }
 
     private void showTimePicker() {
