@@ -31,16 +31,19 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.timilehin.portpark.Models.CarPark;
+import com.timilehin.portpark.Models.OpeningHours;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
-    public static String CarParkLocationLatLng = "CarParkLocationLatLng";
+    public static final String CarParkLocationLatLng = "CarParkLocationLatLng";
+    public static final String CarParkInformation = "CarParkInformation";
 
     private GoogleMap map;
     private SupportMapFragment mapFragment;
@@ -68,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         floatingActionButtonFindSetCarClickListener();
 
         setupAutocompleteFragment();
+
+
     }
 
     private void setupAutocompleteFragment() {
@@ -136,7 +141,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(new LatLng(lat, lng));
             markerOptions.title(name);
-            map.addMarker(markerOptions);
+            Marker marker = map.addMarker(markerOptions);
+            marker.setTag(carPark);
             Log.d("AAA", "MARKER ADDED");
         }
     }
@@ -216,6 +222,48 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         map = googleMap;
         mapSetMyLocationEnabled();
         Log.d("AAA", "MAP IS READY");
+
+        map.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                return getMarkerView(marker);
+            }
+        });
+
+        map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                CarPark carPark = (CarPark) marker.getTag();
+                String infoString = getCarParkInformation(carPark);
+                startActivityAddParkingInfoActivity(marker.getPosition(), infoString);
+            }
+        });
+    }
+
+    private View getMarkerView(Marker marker) {
+        View viewInfo = getLayoutInflater().inflate(R.layout.marker_info, null);
+        TextView textViewInfo = viewInfo.findViewById(R.id.textViewInfo);
+        CarPark carPark = (CarPark) marker.getTag();
+        String infoString = getCarParkInformation(carPark);
+        textViewInfo.setText(infoString);
+
+        return viewInfo;
+    }
+
+    private String getCarParkInformation(CarPark carPark) {
+        OpeningHours openingHours = carPark.getOpeningHours();
+        String openClosed = openingHours == null ? "NA" : openingHours.getOpenNow() ? "open" : "closed";
+        String accessToCarPark = openClosed == "NA" ? "No information" : "Car park is " + openClosed;
+        String infoString = carPark.getName() + ", \n" +
+                carPark.getVicinity() + "\n\n" +
+                "Access: " + accessToCarPark;
+
+        return infoString;
     }
 
     @Override
@@ -238,12 +286,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         floatingActionButtonParkCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddParkingInfoActivity.class);
                 LatLng latLng = new LatLng(13.0,12.0);
-                intent.putExtra("CarParkLocationLatLng", latLng);
-                startActivity(intent);
+                startActivityAddParkingInfoActivity(latLng, null);
             }
         });
+    }
+
+    private void startActivityAddParkingInfoActivity(LatLng latLng, String carParkInformation) {
+        Intent intent = new Intent(getApplicationContext(), AddParkingInfoActivity.class);
+        intent.putExtra(CarParkLocationLatLng, latLng);
+        intent.putExtra(CarParkInformation, carParkInformation);
+        startActivity(intent);
     }
 
     private void floatingActionButtonFindSetCarClickListener() {

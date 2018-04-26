@@ -25,26 +25,36 @@ public class AddParkingInfoActivity extends AppCompatActivity implements TimePic
     private SwitchCompat switchCompatTimer;
     private LinearLayout linearLayoutSetReminderTime;
     private TextView textViewReminderTime;
+    private TextView textViewCarParkInformation;
     private Button buttonSaveParking;
     private Integer timePickerSelectedHour = null;
     private Integer timePickerSelectedMinute = null;
     private LatLng carParkLocationLatLng = null;
+    private String carParkInfo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         carParkLocationLatLng = getIntent().getParcelableExtra(MainActivity.CarParkLocationLatLng);
+        carParkInfo = getIntent().getStringExtra(MainActivity.CarParkInformation);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_add_parking_info);
 
         switchCompatTimer = findViewById(R.id.switchCompatTimer);
         linearLayoutSetReminderTime = findViewById(R.id.linearLayoutSetReminderTime);
         textViewReminderTime = findViewById(R.id.textViewReminderTime);
+        textViewCarParkInformation = findViewById(R.id.textViewCarParkInformation);
         buttonSaveParking = findViewById(R.id.buttonSaveParking);
 
         switchCompatTimerSetOnCheckedChangeListener();
         linearLayoutSetReminderTimeSetOnClickListener();
         buttonSaveParkingSetOnClickListener();
+        textViewCarParkInformationSetText();
+    }
+
+    private void textViewCarParkInformationSetText() {
+        if (carParkInfo == null) { return; }
+        textViewCarParkInformation.setText(carParkInfo);
     }
 
     private void disableLinearLayoutSetReminderTime() {

@@ -163,6 +163,17 @@
                 android:paddingBottom="@dimen/items_inbetween_space"
                 android:paddingTop="@dimen/items_top_padding"
                 android:text="Take a picture your packing area for easy recal" />
+
+            <TextView
+                style="@style/settings_header"
+                android:text="Car park information"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/textViewCarParkInformation"
+                style="@style/settings_details"
+                android:text="NA"
+                android:layout_marginTop="10dp"/>
         </LinearLayout>
 
         <ImageView
