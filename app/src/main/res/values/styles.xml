@@ -1909,7 +1909,17 @@
     </style>
 
     <style name="switch_theme">
-        <item name="thumbTint">@color/primaryDarkColor</item>
-        <item name="trackTint">@color/secondaryColor</item>
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">#46bdbf</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">#f1f1f1
+        </item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f
+        </item>
     </style>
+
+
 </resources>

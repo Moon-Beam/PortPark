@@ -7,6 +7,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,7 @@
 
         <receiver android:name=".AlarmReceiver" />
 
-        <activity android:name=".Dialog" />
+        <activity android:name=".AlarmReminderDialog" />
 
         <!--
         Service to asynchronously fetch a location address using a Geocoder. Setting the

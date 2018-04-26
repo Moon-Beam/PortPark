@@ -9,14 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class Dialog extends AppCompatActivity {
+public class AlarmReminderDialog extends AppCompatActivity {
 
     private Button okBtn, cancleBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dialog);
+        setContentView(R.layout.activity_alarm_reminder_dialog);
 
         okBtn = findViewById(R.id.okBtn);
         cancleBtn = findViewById(R.id.cancelBtn);

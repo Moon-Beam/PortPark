@@ -58,6 +58,7 @@
         android:layout_marginBottom="45dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_park_here_btnx"
+        android:scaleType="center"
         />
 
     <android.support.design.widget.FloatingActionButton
@@ -68,8 +69,8 @@
         android:layout_marginBottom="45dp"
         android:layout_marginEnd="10dp"
         android:src="@drawable/ic_find_car_btnx"
+        android:scaleType="center"
         />
-
 
 
     <TextView

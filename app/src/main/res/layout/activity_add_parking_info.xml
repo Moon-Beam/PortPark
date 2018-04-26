@@ -49,12 +49,12 @@
                 android:text="@string/sett_reminder_label" />
 
             <android.support.v7.widget.SwitchCompat
-                android:id="@+id/timerSwitch"
+                android:id="@+id/switchCompatTimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:checked="false"
+                android:checked="true"
                 android:gravity="center_vertical"
                 android:theme="@style/switch_theme" />
         </RelativeLayout>
@@ -67,7 +67,7 @@
             android:text="@string/sett_reminder_desc" />
 
         <LinearLayout
-            android:id="@+id/ll_set_time"
+            android:id="@+id/linearLayoutSetReminderTime"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -93,11 +93,10 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/tv_reminder_time_desc"
+                android:id="@+id/textViewReminderTime"
                 style="@style/settings_details"
                 android:paddingBottom="@dimen/items_inbetween_space"
-                android:paddingTop="@dimen/items_top_padding"
-                android:text="@string/sett_reminder_time_content" />
+                android:paddingTop="@dimen/items_top_padding" />
         </LinearLayout>
     </LinearLayout>
 
@@ -164,6 +163,17 @@
                 android:paddingBottom="@dimen/items_inbetween_space"
                 android:paddingTop="@dimen/items_top_padding"
                 android:text="Take a picture your packing area for easy recal" />
+
+            <TextView
+                style="@style/settings_header"
+                android:text="Car park information"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/textViewCarParkInformation"
+                style="@style/settings_details"
+                android:text="NA"
+                android:layout_marginTop="10dp"/>
         </LinearLayout>
 
         <ImageView
@@ -176,7 +186,7 @@
     </LinearLayout>
 
     <Button xmlns:n6="http://schemas.android.com/apk/res-auto"
-        android:id="@id/saveParkingBtn"
+        android:id="@+id/buttonSaveParking"
         android:layout_width="122.0dip"
         android:layout_height="36.0dip"
         android:layout_marginBottom="16.0dip"
