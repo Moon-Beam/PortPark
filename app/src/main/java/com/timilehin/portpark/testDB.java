@@ -4,10 +4,8 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,16 +29,16 @@ public class testDB extends AppCompatActivity {
         latView = findViewById(R.id.latView);
         lngView = findViewById(R.id.lngView);
 
-        showUser();
+        getLocations();
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addLoca();}
+                addLocations();}
         });
     }
 
-    private void showUser(){
+    private void getLocations(){
         Cursor cursor = database.getLocation();
 
             if (cursor.moveToLast()){
@@ -57,7 +55,7 @@ public class testDB extends AppCompatActivity {
         database.close();
     }
 
-    private void addLoca(){
+    private void addLocations(){
         double lat = Double.valueOf(latText.getText().toString().trim());
         double lng = Double.valueOf(lngText.getText().toString().trim());
 
