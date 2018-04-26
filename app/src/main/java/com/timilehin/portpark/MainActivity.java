@@ -40,6 +40,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+    public static String CarParkLocationLatLng = "CarParkLocationLatLng";
+
     private GoogleMap map;
     private SupportMapFragment mapFragment;
     private PlaceAutocompleteFragment autocompleteFragment;
@@ -232,14 +234,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-
     private void floatingActionButtonParkCarSetClickListener() {
         floatingActionButtonParkCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddParkingInfoActivity.class);
-                LatLng latLng = new LatLng(122,122);
-                intent.putExtra("CurrentLocationLatLng", latLng);
+                LatLng latLng = new LatLng(13.0,12.0);
+                intent.putExtra("CarParkLocationLatLng", latLng);
                 startActivity(intent);
             }
         });
@@ -250,8 +251,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), FindCar.class);
-                LatLng latLng = new LatLng(122,122);
-                intent.putExtra("CurrentLocationLatLng", latLng);
+                LatLng latLng = new LatLng(13.0,12.0);
+                intent.putExtra("CarParkLocationLatLng", latLng);
                 startActivity(intent);
             }
         });
