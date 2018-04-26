@@ -1,6 +1,5 @@
 package com.timilehin.portpark;
 
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +23,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         ringtone.play();
         com.timilehin.portpark.RingtoneManager.setRingtone(ringtone);
 
-        Intent mIntent = new Intent(context, Dialog.class);
+        Intent mIntent = new Intent(context, AlarmReminderDialog.class);
         mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(mIntent);
 

@@ -100,23 +100,17 @@ public class AddParkingInfoActivity extends AppCompatActivity implements TimePic
     }
 
     private void createAlarm() {
-        //TEST
+        if (linearLayoutSetReminderTime.isEnabled() == false) { return; }
 
-        Intent intenta = new Intent(this, TimerActivity.class);
-        startActivity(intenta);
-        //END TEST
+        Calendar calendar = Calendar.getInstance();
+        long timeInMil = TimeUnit.HOURS.toMillis(timePickerSelectedHour.intValue()) +
+                TimeUnit.MINUTES.toMillis(timePickerSelectedMinute.intValue());
+        calendar.setTimeInMillis(timeInMil);
 
-//        if (linearLayoutSetReminderTime.isEnabled() == false) { return; }
-//
-//        Calendar calendar = Calendar.getInstance();
-//        long timeInMil = TimeUnit.HOURS.toMillis(timePickerSelectedHour.intValue()) +
-//                TimeUnit.MINUTES.toMillis(timePickerSelectedMinute.intValue());
-//        calendar.setTimeInMillis(timeInMil);
-//
-//        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-//        Intent intent = new Intent(this, AlarmReceiver.class);
-//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-//        alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMil, pendingIntent);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMil, pendingIntent);
     }
 
     private void showTimePicker() {

@@ -27,7 +27,7 @@
 
         <receiver android:name=".AlarmReceiver" />
 
-        <activity android:name=".Dialog" />
+        <activity android:name=".AlarmReminderDialog" />
 
         <!--
         Service to asynchronously fetch a location address using a Geocoder. Setting the
